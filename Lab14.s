@@ -57,9 +57,9 @@ while:
     slt x22 x18 x19 #a[N-i-1] > b[i]?
     slt x23 x16 x17 #i < N/2?
     and x23 x22 x23 
-    li x20 0
+    li x21 0
  
-    beq x23, x20, end #if !(a[N-i-1] > b[i] && i < N) exit loop
+    beq x23, x21, end #if !(a[N-i-1] > b[i] && i < N) exit loop
     
     add x20, x12, x16 #x20 = &a[i]
 
