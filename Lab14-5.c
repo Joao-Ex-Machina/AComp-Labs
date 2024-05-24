@@ -34,7 +34,7 @@
 *
 *  Altere a configuração da cache para ter uma performance melhor com o código original.
 *  
-*
+*  Façam a solução mais "engenheira", ou seja a com melhor custo benefício
 *
 *  Justifique!
 * 
@@ -55,9 +55,11 @@ typedef struct {
 	int x;
 	int y;
 	int z;
-} point;
+} target;
 
-point vect[N];
+target vect[N];
+target vect2[N];
+target vect3[N];
 int x_mean, y_mean, z_mean;
 
 /*******************************************************************************
@@ -78,9 +80,9 @@ void CacheKernel()
 
     register int x_sum = 0;
     for (i = 0; i < N; i++){
-		x_sum += vect[i].x;
-        y_sum += vect[i].y;
-        z_sum += vect[i].z;
+		x_sum += vect[i].x + vect2[i].x + vect3[i].x ;
+        y_sum += vect[i].y + vect2[i].y + vect3[i].y ;
+        z_sum += vect[i].z + vect2[i].z + vect3[i].z ; 
     }
 
 	x_mean = x_sum / N; 
@@ -112,6 +114,13 @@ void Init()
 		vect[i].x = i;
 		vect[i].y = N-i-1;
 		vect[i].z = i*i;
+        vect2[i].x = i;
+		vect2[i].y = N-1;
+		vect2[i].z = i-2;
+        vect3[i].x = i*4;
+		vect3[i].y = N-i-i;
+		vect3[i].z = i*2;
+
 	}
 }
 
