@@ -1,3 +1,4 @@
+
 #include <stdlib.h>
 #include <stdio.h>
 
@@ -79,11 +80,15 @@ void CacheKernel()
     register int i;
 
     register int x_sum = 0;
-    for (i = 0; i < N; i++){
+    register int y_sum=0;
+    register int z_sum=0;
+
+    for (i = 0; i < N; i++)
 		x_sum += vect[i].x + vect2[i].x + vect3[i].x ;
+    for (i = 0; i < N; i++)
         y_sum += vect[i].y + vect2[i].y + vect3[i].y ;
+    for (i = 0; i < N; i++)
         z_sum += vect[i].z + vect2[i].z + vect3[i].z ; 
-    }
 
 	x_mean = x_sum / N; 
 	y_mean = y_sum / N;
